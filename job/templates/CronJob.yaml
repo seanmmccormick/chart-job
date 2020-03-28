@@ -13,10 +13,10 @@ spec:
   concurrencyPolicy: "{{ .Values.concurrencyPolicy }}"
   {{- end }}
   {{- if .Values.successfulJobsHistoryLimit }}
-  successfulJobsHistoryLimit: "{{ .Values.successfulJobsHistoryLimit }}"
+  successfulJobsHistoryLimit: {{ .Values.successfulJobsHistoryLimit }}
   {{- end }}
   {{- if .Values.failedJobsHistoryLimit }}
-  failedJobsHistoryLimit: "{{ .Values.failedJobsHistoryLimit }}"
+  failedJobsHistoryLimit: {{ .Values.failedJobsHistoryLimit }}
   {{- end }}
   {{- if .Values.suspend }}
   suspend: {{ .Values.suspend }}
