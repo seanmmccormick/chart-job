@@ -45,9 +45,18 @@ spec:
         runAsUser: 1000
         fsGroup: 1000
       restartPolicy: {{ .Values.restartPolicy }}
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- range $key, $val := .Values.imagePullSecrets }}
+        - name: {{ required "imagePullSecrets must be an array of object with a name key" $val.name }}
+        {{- end }}
+      {{- end }}
       containers:
       - image: {{ .Values.image }}
         name: {{ include "hmcts.releaseName" . }}
+        {{- if .Values.command }}
+        command: {{ .Values.command }}
+        {{- end }}
         {{- with .Values.args }}
         args:
         {{- range . }}

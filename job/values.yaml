@@ -10,6 +10,18 @@ cpuLimits: '2500m'
 # Kind of Job to be created. It can be a Job or a CronJob
 kind: Job
 
+# See https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod on how to set these.
+# This should be set to {} in the default values
+imagePullSecrets: {}
+# - name: my-docker-registry-secret
+
+# Set this to the entrypoint array.
+# either [ "foo", "bar", "baz" ] or
+# - foo
+# - bar
+# - baz
+command: {}
+
 # Setting a global.job.kind would override the job kind
 global:
   enableKeyVaults: false
